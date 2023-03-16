@@ -25,12 +25,16 @@ header nav a {
 
 header nav a.active {
   background: var(--primary);
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 0.2em 0.4em;
 }
 
-header nav h2 {
-  margin: 0 auto 0 0;
+header h2 {
+  margin: 0 auto 0.5em 0;
   border-bottom: 2px solid var(--primary);
   line-height: 1.1;
+}
+
+input {
+  text-transform: uppercase;
 }

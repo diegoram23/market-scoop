@@ -9,28 +9,24 @@ import {
 // pages
 import Home from './pages/Home';
 import About from './pages/About';
-import Faq from './pages/help/Faq';
-
+import News from './pages/News';
 
 // layouts
 import RootLayout from './layouts/RootLayout';
-import HelpLayout from './layouts/HelpLayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />} >
       <Route index element={<Home />} />
       <Route path='about' element={<About />} />
-      <Route path='help' element={<HelpLayout />} >
-        <Route path='faq' element={<Faq />} />
-      </Route>
-
+      <Route path='news' element={<News />} />
+      
     </Route>
+    
   )
 )
 
 function App() {
-  const key = 'cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg'
 
   return (
     <RouterProvider router={router} />

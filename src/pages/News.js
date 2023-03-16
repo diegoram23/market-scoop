@@ -1,8 +1,8 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const HelpLayout = () => {
+const News = () => {
 
     const [marketNews, setMarketNews] = useState([])
 
@@ -10,9 +10,8 @@ const HelpLayout = () => {
         axios
             .get(`https://finnhub.io/api/v1/news?category=general?&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
             .then(res => {
-                const tenArticles = res.data.slice(0, 7)
-                setMarketNews(tenArticles)
-                console.log(tenArticles);
+                const sevenArticles = res.data.slice(0, 7)
+                setMarketNews(sevenArticles)
             })
     }, [])
 
@@ -27,12 +26,9 @@ const HelpLayout = () => {
                     <p className="news-time"> {new Date(news.datetime * 1000).toLocaleString("en-us")}</p>
                     <p className="news-summary">{news.summary}</p>
                 </div>)}
-            <nav>
-                <NavLink to='faq'>FAQ</NavLink>
-            </nav>
             <Outlet />
         </div>
     );
 }
 
-export default HelpLayout;
+export default News;

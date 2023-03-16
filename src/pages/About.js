@@ -19,6 +19,13 @@ const About = ({ tickerName }) => {
     console.log('trimmed', newsArticles)
     return (
         <div>
+            {newsArticles.map(article =>
+                <div className='news-container' key={article.id}>
+                    <a href={article.url}><h4 className="news-headline">{article.headline}</h4></a>
+                    <img className='news-image' src={article.image} />
+                    <p className="news-time"> {new Date(article.datetime * 1000).toLocaleString("en-us")}</p>
+                    <p className="news-summary">{article.summary}</p>
+                </div>)}
             <p>{tickerName}</p>
         </div>
     );

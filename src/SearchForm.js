@@ -54,8 +54,6 @@ const SearchForm = () => {
                 </div>
             )}
             {tickerName && <About tickerName={tickerName} />}
-            {console.log('ticker name is', tickerName)}
-
         </div>
 
     );

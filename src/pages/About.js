@@ -3,22 +3,34 @@ import { useEffect, useState } from "react";
 
 const About = ({ tickerName }) => {
 
-    const [newsInfo, setNewsInfo] = useState([])
-    console.log('props is', tickerName);
+    const [tickerNews, setTickerNews] = useState([])
+    const [tickerStats, setTickerStats] = useState([])
 
     useEffect(() => {
         axios
             .get(`https://finnhub.io/api/v1/company-news?symbol=${tickerName}&from=2023-01-01&to=2023-03-03&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
             .then(res => {
-                setNewsInfo(res.data)
-                console.log('fetch data', res.data)
+                setTickerNews(res.data)
             })
     }, [])
 
-    const newsArticles = newsInfo.slice(0, 5)
-    console.log('trimmed', newsArticles)
+    const newsArticles = tickerNews.slice(0, 5)
+
+    useEffect(() => {
+        axios
+            .get(`https://finnhub.io/api/v1/quote?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+            .then(res => {
+                setTickerStats(res.data)
+            })
+    },[])
+    
+    console.log('stats', tickerStats);
+
     return (
         <div>
+            {/*Quotes and prices related to ticker name that was searched*/}
+           
+            {/*News related to ticker name that was searched*/}
             {newsArticles.map(article =>
                 <div className='news-container' key={article.id}>
                     <a href={article.url}><h4 className="news-headline">{article.headline}</h4></a>

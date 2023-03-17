@@ -23,13 +23,13 @@ const About = ({ tickerName }) => {
                 setTickerStats(res.data)
             })
     },[])
-    
+
     console.log('stats', tickerStats);
 
     return (
         <div>
             {/*Quotes and prices related to ticker name that was searched*/}
-           
+           { <p>{Object.values(tickerStats)}</p>}
             {/*News related to ticker name that was searched*/}
             {newsArticles.map(article =>
                 <div className='news-container' key={article.id}>

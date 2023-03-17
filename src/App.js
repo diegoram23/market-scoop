@@ -1,5 +1,5 @@
 import {
-  createBrowserRouter,
+  createHashRouter,
   Route,
   createRoutesFromElements,
   RouterProvider
@@ -14,7 +14,7 @@ import News from './pages/News';
 // layouts
 import RootLayout from './layouts/RootLayout';
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />} >
       <Route index element={<Home />} />

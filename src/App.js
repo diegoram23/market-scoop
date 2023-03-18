@@ -33,13 +33,18 @@ export default function App() {
             : tickers.filter(tick =>
                 tick.displaySymbol.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 5)
 
+    const clearState = () => {
+        setTickerName('')
+        setSearchValue('')
+    }
+
     return (
         <div>
             <HashRouter>
                 <header>
                     <h2>El Guru News</h2>
                     <nav>
-                        <NavLink to='/' onClick={() => setTickerName('')}>Home</NavLink>
+                        <NavLink to='/' onClick={clearState}>Home</NavLink>
                         <NavLink to='/about'>About</NavLink>
                     </nav>
                     <form onSubmit={handleSubmit}>

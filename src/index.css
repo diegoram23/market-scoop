@@ -44,7 +44,7 @@ header nav a {
 header nav a.active {
   background: var(--primary);
   border-radius: 6px;
-  padding: 0.2em 0.4em;
+  padding: 0.25em 0.45em;
 }
 
 header h2 {
@@ -70,10 +70,10 @@ input {
   color: white;
   font-weight: bold;
   height: 2rem;
-  background-color: #5f9df7;
+  background-color: #f99417;
   border: none;
   border-radius: 5px;
-  padding: 0.4em 0.5em;
+  padding: 0.4em 0.8em;
   letter-spacing: .1em;
 }
 

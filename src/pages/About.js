@@ -21,11 +21,9 @@ const About = ({ tickerName }) => {
                 <div className='news-container' key={article.id}>
                     <a href={article.url}> <h4 className="news-headline">{article.headline}</h4> </a>
                     <a href={article.url}> <img className='news-image' alt='user uploaded content' src={article.image} /> </a>
-                    <p className="news-time"> {new Date(article.datetime * 1000).toLocaleString("en-us")}</p>
+                    <p className="news-time"> {new Date(article.datetime * 1000).toLocaleString("en-us", { hour: '2-digit', minute: '2-digit' })}</p>
                     <p className="news-summary">{article.summary}</p>
                 </div>)}
-            
-
         </div>
     );
 }

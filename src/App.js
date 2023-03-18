@@ -52,20 +52,19 @@ export default function App() {
                         <button className="search-btn">Search</button>
                     </form>
 
-                    {displaySearch.map(ticker =>
-
-                        <div className='display-search-container' key={ticker.figi}>
-                            <p className="ticker-name">{ticker.displaySymbol}</p>
-                            <Link to='/about'>
-                                <button className='details-btn' onClick={() => (setTickerName(ticker.symbol))}>Details</button>
-                            </Link>
-                        </div>
-                    )}
-                    {tickerName && <About tickerName={tickerName} />}
 
                 </header>
 
-                
+                {displaySearch.map(ticker =>
+                    <div className='display-search-container' key={ticker.figi}>
+                        <p className="ticker-name">{ticker.displaySymbol}</p>
+                        <Link to='/about'>
+                            <button className='details-btn' onClick={() => (setTickerName(ticker.symbol))}>Details</button>
+                        </Link>
+                    </div>
+                )}
+                {tickerName && <About tickerName={tickerName} />}
+
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />} />

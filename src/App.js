@@ -15,7 +15,6 @@ export default function App() {
     }
 
     const handleSearch = (e) => {
-        console.log(e.target.value);
         setSearchValue(e.target.value)
     }
 
@@ -40,8 +39,8 @@ export default function App() {
                 <header>
                     <h2>El Guru News</h2>
                     <nav>
-                        <NavLink to='/'>Home</NavLink>
-                        <NavLink to='/about'>About</NavLink>
+                        <NavLink to='/' onClick={() => setTickerName('')}>Home</NavLink>
+                        <Link to='/about'></Link>
                     </nav>
                     <form onSubmit={handleSubmit}>
                         <input

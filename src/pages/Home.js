@@ -18,7 +18,7 @@ const Home = () => {
                 const sevenArticles = res.data.slice(0, 7)
                 setMarketNews(sevenArticles)
             })
-            //Fetches price quotes on each individual ticker (qqq, aapl, spy, dia)
+        //Fetches price quotes on each individual ticker (qqq, aapl, spy, dia)
         axios.get('https://finnhub.io/api/v1/quote?symbol=qqq&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg')
             .then(res => {
                 setQqq(res.data)
@@ -38,11 +38,10 @@ const Home = () => {
     }, [])
     //Filters the news to 'top news' and limits quantity to 7
     const techNews = marketNews.filter(news => news.category === 'top news')
-
     return (
         //Displays the prices of the four tickers above and the top news from fetch requests
         <div>
-            
+
             <Stats
                 qqq={qqq}
                 aapl={aapl}
@@ -53,11 +52,10 @@ const Home = () => {
             {techNews.map(news =>
                 <div className='news-container' key={news.id}>
                     <a href={news.url}><h4 className="news-headline">{news.headline}</h4></a>
-                    <a href={news.url}> <img className='news-image' src={news.image} /> </a>
+                    <a href={news.url}> <img className='news-image' alt='user uploaded content' src={news.image} /> </a>
                     <p className="news-time"> {new Date(news.datetime * 1000).toLocaleString("en-us")}</p>
                     <p className="news-summary">{news.summary}</p>
                 </div>)}
-
         </div>
     );
 }

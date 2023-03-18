@@ -40,7 +40,7 @@ export default function App() {
                     <h2>El Guru News</h2>
                     <nav>
                         <NavLink to='/' onClick={() => setTickerName('')}>Home</NavLink>
-                        <Link to='/about'></Link>
+                        <NavLink to='/about'>About</NavLink>
                     </nav>
                     <form onSubmit={handleSubmit}>
                         <input

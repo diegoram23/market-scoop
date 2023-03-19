@@ -1,9 +1,10 @@
 import { HashRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
 import Home from './pages/Home';
 import About from './pages/About';
+import Watchlist from './pages/Watchlist';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-
+import star from './icons/star-regular.svg'
 export default function App() {
 
     const [searchValue, setSearchValue] = useState('')
@@ -42,11 +43,8 @@ export default function App() {
         <div>
             <HashRouter>
                 <header>
-                    <h2>El Guru News</h2>
+                    <NavLink to='/' onClick={clearState} className='logo'>Guru Finance</NavLink>
                     <nav>
-                        <NavLink to='/' onClick={clearState}>Home</NavLink>
-                        <NavLink to='/about'>About</NavLink>
-                    </nav>
                     <form onSubmit={handleSubmit}>
                         <input
                             placeholder="Search..."
@@ -56,8 +54,9 @@ export default function App() {
                         />
                         <button className="search-btn">Search</button>
                     </form>
-
-
+                    <NavLink to='/watchlist'>Favorites</NavLink>
+                    </nav>
+                    
                 </header>
 
                 {displaySearch.map(ticker =>
@@ -65,6 +64,7 @@ export default function App() {
                         <p className="ticker-name">{ticker.displaySymbol}</p>
                         <Link to='/about'>
                             <button className='details-btn' onClick={() => (setTickerName(ticker.symbol))}>Details</button>
+                            <i className="fa-regular fa-star"></i>
                         </Link>
                     </div>
                 )}
@@ -73,6 +73,7 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/about' element={<About />} />
+                    <Route path='/watchlist' element={<Watchlist />}></Route>
                 </Routes>
             </HashRouter>
 

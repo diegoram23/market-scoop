@@ -18,40 +18,44 @@ body {
 /*------------Header and Nav -----------*/
 
 
-header {
+header  {
   background-color: #363638;
-  padding: 1em 1em 0.5em 1em;
+  background-image: linear-gradient(to right, #7a7a7a, #3a3a3b );
+  padding: 0.9em 0.7em 0.4em 0.7em;
   color: white;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0.3em 0;
+  border-bottom: 2px solid var(--primary);
+  line-height: 1.1;
+  font-size: 28px;
+  color: #ffffff;
+  text-decoration: none;
+}
 header nav {
   display: flex;
   align-items: center;
-  gap: 1em;
-  font-size: 1.15rem;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.2em;
 }
 
 header nav a {
   text-decoration: none;
   color: #2f2f2f;
   color: white;
-  font-weight: bold;
+  font-size: 1.1rem;
+  margin:0 auto;
 }
 
-header nav a.active {
+header nav a.active,
+header a.active {
   background: var(--primary);
   border-radius: 6px;
-  padding: 0.25em 0.45em;
-}
-
-header h2 {
-  margin: 0 auto 0.5em 0;
-  border-bottom: 2px solid var(--primary);
-  line-height: 1.1;
-  font-size: 28px;
+  padding: 0.1em 0.3em;
 }
 
 
@@ -59,22 +63,21 @@ header h2 {
 
 input {
   text-transform: uppercase;
-  margin-right: 0.2em;
-  margin-bottom: 0.5em;
+  width: 60%;
   border-radius: 4px;
   border: none;
-  height: 2rem;
+  height: 1.7rem;
 }
 
 .search-btn {
   color: white;
   font-weight: bold;
-  height: 2rem;
-  background-color: var(--primary);
+  background-color: #f99417;
   border: none;
   border-radius: 5px;
-  padding: 0.4em 0.8em;
+  padding: 0.5em 0.8em;
   letter-spacing: .1em;
+  margin-left: 0.5em;
 }
 
 
@@ -84,22 +87,21 @@ input {
   display: flex;
   justify-content: space-around;
   background-color: rgb(231, 231, 231);
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-  padding: 0;
-  margin: 0;
+  margin: 0.25em 0;
 }
 
-
-
+.stats-card {
+  padding: 0 1em;
+  max-width: 3.5rem;
+}
 .stats-card:not(:last-child) {
   border-right: 1px solid black;
-  padding: 0 1em;
+  
 
 }
 .stats-name {
   color: var(--primary);
-  margin:  0
+  margin: 0;
 }
 
 .stats-price {
@@ -109,15 +111,19 @@ font-weight: bold;
 
 .stats-percent {
   margin: 0;
-  color: green;
 }
-/*-----------Search results (ticker names)  -----------*/
+/*-----------Search results (ticker names and icon)  -----------*/
 
+i {
+  margin-left: 0.3em;
+  color: #f99417;
+  font-size: 1.2rem;
+}
 
 .details-btn {
   color: white;
   font-weight: bold;
-  background-color: #f99417;
+  background-color: var(--primary);
   border: none;
   border-radius: 5px;
   padding: 0.4em 0.5em;

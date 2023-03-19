@@ -70,7 +70,7 @@ input {
   color: white;
   font-weight: bold;
   height: 2rem;
-  background-color: #f99417;
+  background-color: var(--primary);
   border: none;
   border-radius: 5px;
   padding: 0.4em 0.8em;
@@ -117,7 +117,7 @@ font-weight: bold;
 .details-btn {
   color: white;
   font-weight: bold;
-  background-color: #5f9df7;
+  background-color: #f99417;
   border: none;
   border-radius: 5px;
   padding: 0.4em 0.5em;
@@ -144,6 +144,8 @@ font-weight: bold;
 
 .news-container {
   margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   background-color: #ffffff;
   padding: 0.5em 1em;
   border-radius: 8px;

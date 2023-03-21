@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { useParams } from "react-router-dom"
 
 const About = ({ tickerName }) => {
+
+    const params = useParams()
     const [tickerNews, setTickerNews] = useState([])
+    const [profile, setProfile] = useState([])
+    const [earnings, setEarnings] = useState([])
 
     useEffect(() => {
         axios
@@ -10,22 +15,52 @@ const About = ({ tickerName }) => {
             .then(res => {
                 setTickerNews(res.data)
             })
-    }, [tickerName])
+        axios
+            .get(`https://finnhub.io/api/v1/stock/profile2?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+            .then(res => {
+                setProfile(res.data)
+            })
+        axios
+            .get(`https://finnhub.io/api/v1/stock/earnings?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+            .then(res => {
+                setEarnings(res.data)
+                console.log(res.data)
+            })
+    }, [params.id])
+    console.log('test', earnings[0])
 
-    const newsArticles = tickerNews.slice(0, 5)
+    const newsArticles = tickerNews.slice(0, 4)
 
     return (
-        <div>
+        <div className="about-container">
 
+            {profile && earnings[0] ? (
+                <div className="profile-container">
+                    <header>
+                        <h3>{profile.name}</h3>
+                        <img src={profile.logo} />
+                    </header>
+                    <p><strong>Sector: </strong>{profile.finnhubIndustry}</p>
+                    <p><strong>IPO date: </strong>{profile.ipo}</p>
+                    <p><strong>Shares outstanding: </strong>{profile.shareOutstanding} M</p>
+
+                    <h3 className="earnings-heading">Previous Earnings</h3>
+                    <p><strong>Estimated:</strong> {earnings[0].estimate.toFixed(2)} EPS</p>
+                    <p><strong>Actual:</strong> {earnings[0].actual.toFixed(2)} EPS</p>
+                    <p><strong>Date:</strong> Q{earnings[0].quarter} {earnings[0].year}</p>
+                </div>
+            ) : <p>Loading...</p>}
+
+            <h2>{`${tickerName} News`}</h2>
             {newsArticles.map(article =>
-                <div className='news-container' key={article.id}>
+                <article className='news-container' key={article.id}>
                     <a href={article.url}> <h4 className="news-headline">{article.headline}</h4> </a>
                     <a href={article.url}> <img className='news-image' alt='user uploaded content' src={article.image} /> </a>
                     <p className="news-time"> {new Date(article.datetime * 1000).toLocaleString("en-us", { hour: '2-digit', minute: '2-digit' })}</p>
                     <p className="news-summary">{article.summary}</p>
-                </div>)}
+                </article>)}
         </div>
-    );
+    )
 }
 
-export default About;
+export default About

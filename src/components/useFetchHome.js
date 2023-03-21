@@ -11,7 +11,7 @@ const useFetchHome = () => {
             'https://finnhub.io/api/v1/quote?symbol=qqq&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg',
             'https://finnhub.io/api/v1/quote?symbol=spy&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg',
             'https://finnhub.io/api/v1/quote?symbol=dia&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg',
-            'https://finnhub.io/api/v1/quote?symbol=enz&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg'
+            'https://finnhub.io/api/v1/quote?symbol=aapl&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg'
         ]
         const promises = urls.map(url => axios.get(url))
         const results = await Promise.all(promises)
@@ -32,8 +32,8 @@ const useFetchHome = () => {
         axios
             .get(`https://finnhub.io/api/v1/news?category=general?&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
             .then(res => {
-                const sevenArticles = res.data.slice(0, 7)
-                setMarketNews(sevenArticles)
+                const fourArticles = res.data.slice(0, 6)
+                setMarketNews(fourArticles)
             })
     }, [])
 

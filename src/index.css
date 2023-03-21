@@ -21,7 +21,7 @@ body {
 header  {
   background-color: #363638;
   background-image: linear-gradient(to right, #7a7a7a, #3a3a3b );
-  padding: 0.9em 0.7em 0.4em 0.7em;
+  padding: 0.75em 0.7em 0.4em 0.7em;
   color: white;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -36,6 +36,12 @@ header  {
   font-size: 28px;
   color: #ffffff;
   text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.logo span {
+  color: var(--primary);
 }
 header nav {
   display: flex;
@@ -78,6 +84,7 @@ input {
   padding: 0.5em 0.8em;
   letter-spacing: .1em;
   margin-left: 0.5em;
+  cursor: pointer;
 }
 
 
@@ -118,6 +125,7 @@ i {
   margin-left: 0.3em;
   color: #f99417;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .details-btn {
@@ -129,6 +137,7 @@ i {
   padding: 0.4em 0.5em;
   letter-spacing: .1em;
   margin: auto 0;
+  cursor: pointer;
 }
 
 .display-search-container {
@@ -147,7 +156,38 @@ i {
 
 /*-----News results on home page and about page -----------*/
 
+.about-container h2 {
+  color: var(--primary);
+  text-align: center;
+  margin: 0;
+}
 
+.profile-container {
+  margin: 0.5em;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+.profile-container p, .profile-container h3 {
+  margin: 0;
+  padding: 0 0.5em;
+}
+
+.profile-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2em 0.5em 0.2em 0.2em;
+}
+.earnings-heading {
+  text-align: center;
+  color: var(--primary);
+  border-bottom: 1px solid #2f2f2f;
+  width: 50%;
+}
+.about-headline {
+  margin: 0;
+  text-align: center;
+}
 .news-container {
   margin-bottom: 0.5em;
   margin-left: 0.5em;
@@ -174,7 +214,10 @@ i {
 }
 
 .news-image {
-  width: 100%;
+  display: block;
+  margin: 0 auto;
+  width: 95%;
+  max-height: 12rem;
   border-radius: 10px;
   margin-top: 0.5em;
   cursor: pointer;

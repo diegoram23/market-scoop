@@ -4,7 +4,6 @@ import About from './pages/About';
 import Watchlist from './pages/Watchlist';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import star from './icons/star-regular.svg'
 export default function App() {
 
     const [searchValue, setSearchValue] = useState('')

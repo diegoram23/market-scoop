@@ -28,14 +28,13 @@ export default function App() {
                     ticker.displaySymbol.length <= 4 && ticker.type === 'Common Stock' || ticker.type === 'ADR'))
             })
     }, [])
-    
+
     const displaySearch =
         searchValue.length <= 0
             ? []
             : tickers.filter(tick =>
-
                 tick.displaySymbol.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 5)
-
+    
     const clearState = () => {
         setTickerName('')
         setSearchValue('')

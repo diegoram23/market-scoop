@@ -8,28 +8,30 @@ const About = ({ tickerName }) => {
     const [tickerNews, setTickerNews] = useState([])
     const [profile, setProfile] = useState([])
     const [earnings, setEarnings] = useState([])
+    const [quotes, setQuotes] = useState([])
 
     useEffect(() => {
         axios
             .get(`https://finnhub.io/api/v1/company-news?symbol=${tickerName}&from=2023-01-01&to=2023-03-03&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => {
-                setTickerNews(res.data)
-            })
+            .then(res => setTickerNews(res.data))
         axios
             .get(`https://finnhub.io/api/v1/stock/profile2?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => {
-                setProfile(res.data)
-            })
+            .then(res => setProfile(res.data))
         axios
             .get(`https://finnhub.io/api/v1/stock/earnings?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
             .then(res => {
                 setEarnings(res.data)
-                console.log(res.data)
             })
+        axios.get(`https://finnhub.io/api/v1/quote?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+            .then(res => setQuotes(res.data))
+
     }, [params.id])
-    console.log('test', earnings[0])
 
     const newsArticles = tickerNews.slice(0, 4)
+
+    const styles = {
+        color: quotes.dp > 0 ? '#03c988' : '#ff0303'
+    }
 
     return (
         <div className="about-container">
@@ -38,12 +40,12 @@ const About = ({ tickerName }) => {
                 <div className="profile-container">
                     <header>
                         <h3>{profile.name}</h3>
+                        <h3 style={styles}>{quotes.c.toFixed(2)}</h3>
+                        <h3 style={styles}>{quotes.dp.toFixed(2)}%</h3>
                         <img src={profile.logo} />
                     </header>
                     <p><strong>Sector: </strong>{profile.finnhubIndustry}</p>
                     <p><strong>IPO date: </strong>{profile.ipo}</p>
-                    <p><strong>Shares outstanding: </strong>{profile.shareOutstanding} M</p>
-
                     <h3 className="earnings-heading">Previous Earnings</h3>
                     <p><strong>Estimated:</strong> {earnings[0].estimate.toFixed(2)} EPS</p>
                     <p><strong>Actual:</strong> {earnings[0].actual.toFixed(2)} EPS</p>

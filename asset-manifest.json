@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/stock-market-watchlist/static/css/main.0a4eb5b8.css",
-    "main.js": "/stock-market-watchlist/static/js/main.64057977.js",
+    "main.css": "/stock-market-watchlist/static/css/main.abe84351.css",
+    "main.js": "/stock-market-watchlist/static/js/main.116fd5a9.js",
     "index.html": "/stock-market-watchlist/index.html",
-    "main.0a4eb5b8.css.map": "/stock-market-watchlist/static/css/main.0a4eb5b8.css.map",
-    "main.64057977.js.map": "/stock-market-watchlist/static/js/main.64057977.js.map"
+    "main.abe84351.css.map": "/stock-market-watchlist/static/css/main.abe84351.css.map",
+    "main.116fd5a9.js.map": "/stock-market-watchlist/static/js/main.116fd5a9.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a4eb5b8.css",
-    "static/js/main.64057977.js"
+    "static/css/main.abe84351.css",
+    "static/js/main.116fd5a9.js"
   ]
 }

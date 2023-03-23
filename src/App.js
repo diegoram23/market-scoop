@@ -30,7 +30,7 @@ export default function App() {
             })
             .then(data => {
                 setTickers(data.filter(ticker =>
-                    ticker.displaySymbol.length <= 4 && ticker.type === 'Common Stock' || ticker.type === 'ADR'))
+                    ticker.displaySymbol.length <= 4 && (ticker.type === 'Common Stock' || ticker.type === 'ADR')))
                 setIsError(null)
                 setIsPending(false)
             })
@@ -75,14 +75,15 @@ export default function App() {
                 </header>
 
                 {displaySearch.map(ticker =>
-                
                     <div className='display-search-container' key={ticker.figi}>
-                        {isPending ? (<p>loading</p>
-                        ) : <p className="ticker-name">{ticker.displaySymbol}</p>}
+                        {isPending ? (
+                            <p>loading</p>
+                        ) :
+                            <p className="ticker-name">{ticker.displaySymbol}</p>}
                         <Link to={`/about/${ticker.symbol}`}>
                             <button className='details-btn' onClick={() => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
-                            <i className="fa-regular fa-star"></i>
                         </Link>
+                        <i className="fa-regular fa-star"></i>
                     </div>
                 )}
 

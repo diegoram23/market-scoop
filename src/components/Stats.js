@@ -1,4 +1,4 @@
-const Stats = ({  all }) => {
+const Stats = ({ all}) => {
     const styles = {
         color: all.dp < 0 ? 'red' : 'green'
     }
@@ -11,7 +11,6 @@ const Stats = ({  all }) => {
                     <p className="stats-price">{all.c}</p>
                 </section>
             )}
-
         </main>
     )
 }

@@ -9,9 +9,12 @@ const About = ({ tickerName }) => {
     const [profile, setProfile] = useState([])
     const [earnings, setEarnings] = useState([])
     const [quotes, setQuotes] = useState([])
+    const [isPending, setIsPending] = useState(true)
+
 
     useEffect(() => {
-        axios
+     
+            axios
             .get(`https://finnhub.io/api/v1/company-news?symbol=${tickerName}&from=2023-01-01&to=2023-03-03&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
             .then(res => setTickerNews(res.data))
         axios
@@ -19,14 +22,12 @@ const About = ({ tickerName }) => {
             .then(res => setProfile(res.data))
         axios
             .get(`https://finnhub.io/api/v1/stock/earnings?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => {
-                setEarnings(res.data)
-            })
+            .then(res => setEarnings(res.data))
         axios.get(`https://finnhub.io/api/v1/quote?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
             .then(res => setQuotes(res.data))
-
+      
+        setIsPending(false)
     }, [params.id])
-
     const newsArticles = tickerNews.slice(0, 4)
 
     const styles = {
@@ -35,8 +36,8 @@ const About = ({ tickerName }) => {
 
     return (
         <div className="about-container">
-
-            {profile && earnings[0] ? (
+{isPending && <h3 className="loading">Loading Data..</h3>}
+            {profile && earnings[0] && quotes ? (
                 <div className="profile-container">
                     <header>
                         <h3>{profile.name}</h3>

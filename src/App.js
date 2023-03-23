@@ -34,12 +34,12 @@ export default function App() {
             ? []
             : tickers.filter(tick =>
                 tick.displaySymbol.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 5)
-    
+
     const clearState = () => {
         setTickerName('')
         setSearchValue('')
     }
-
+ 
     return (
         <div>
             <HashRouter>
@@ -53,7 +53,9 @@ export default function App() {
                                 onChange={handleSearch}
                                 value={searchValue}
                             />
-                            <button className="search-btn">Search</button>
+                            <Link to={`/about/${searchValue}`}>
+                                <button className="search-btn" onClick={() => setTickerName(searchValue.toUpperCase(), setSearchValue(''))}>Search</button>
+                            </Link>
                         </form>
                         <NavLink to='/watchlist'>Favorites</NavLink>
                     </nav>
@@ -64,7 +66,7 @@ export default function App() {
                     <div className='display-search-container' key={ticker.figi}>
                         <p className="ticker-name">{ticker.displaySymbol}</p>
                         <Link to={`/about/${ticker.symbol}`}>
-                            <button className='details-btn' onClick={() => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
+                            <button className='details-btn' onClick={(id) => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
                             <i className="fa-regular fa-star"></i>
                         </Link>
                     </div>

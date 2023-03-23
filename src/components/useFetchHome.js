@@ -5,6 +5,7 @@ const useFetchHome = () => {
 
     const [marketNews, setMarketNews] = useState([])
     const [all, setAll] = useState([])
+    const [isPending, setIsPending] = useState(true)
 
     const getData = async () => {
         const urls = [
@@ -24,20 +25,23 @@ const useFetchHome = () => {
     }
 
     useEffect(() => {
-        getData()
-            .then(data => {
-                setAll(data)
-            })
-        //Fetches the top news
-        axios
-            .get(`https://finnhub.io/api/v1/news?category=general?&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => {
-                const fourArticles = res.data.slice(0, 6)
-                setMarketNews(fourArticles)
-            })
+     
+            getData()
+                .then(data => {
+                    setAll(data)
+                    setIsPending(false)
+                })
+            //Fetches the top news
+            axios
+                .get(`https://finnhub.io/api/v1/news?category=general?&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+                 .then(res => {
+                        const fourArticles = res.data.slice(0, 6)
+                        setMarketNews(fourArticles)
+                        setIsPending(false)
+                })
     }, [])
 
-    return { marketNews, all }
+    return { marketNews, all, isPending }
 
 }
 

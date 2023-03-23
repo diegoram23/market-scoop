@@ -12,6 +12,19 @@ export default function App() {
     const [isPending, setIsPending] = useState(true)
     const [isError, setIsError] = useState(null)
 
+    const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('favorites')) || [])
+
+    useEffect(() => {
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+    },[favorites])
+
+
+    const add = (id) => {
+        setFavorites(prevId =>
+             [...prevId, {id, saved: true}]
+        )
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
     }
@@ -83,14 +96,14 @@ export default function App() {
                         <Link to={`/about/${ticker.symbol}`}>
                             <button className='details-btn' onClick={() => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
                         </Link>
-                        <i className="fa-regular fa-star"></i>
+                        <i className="fa-regular fa-star" onClick={() => add(ticker.symbol)}></i>
                     </div>
                 )}
 
                 <Routes>
                     <Route path='/' element={<Home />} />
                     {tickerName && <Route path='/about/:id' element={<About tickerName={tickerName} />} />}
-                    <Route path='/watchlist' element={<Watchlist />}></Route>
+                    <Route path='/watchlist' element={<Watchlist favorites={favorites}/>}></Route>
                 </Routes>
             </HashRouter>
 

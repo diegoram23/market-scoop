@@ -1,4 +1,3 @@
-import HomeNews from "../components/HomeNews"
 import Stats from "../components/Stats"
 import useFetchHome from "../components/useFetchHome"
 
@@ -16,7 +15,7 @@ const Home = () => {
             <Stats
                 all={all}
             />
-            
+
             {isPending && <h3 className="loading">Loading Data..</h3>}
             {techNews.map(news =>
             <div className='news-container' key={news.id}>

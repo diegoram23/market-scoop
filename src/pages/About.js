@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
 import { useParams } from "react-router-dom"
 
 const About = ({ tickerName }) => {
@@ -10,24 +9,80 @@ const About = ({ tickerName }) => {
     const [earnings, setEarnings] = useState([])
     const [quotes, setQuotes] = useState([])
     const [isPending, setIsPending] = useState(true)
-
+    const [isError, setIsError] = useState(null)
 
     useEffect(() => {
-     
-            axios
-            .get(`https://finnhub.io/api/v1/company-news?symbol=${tickerName}&from=2023-01-01&to=2023-03-03&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => setTickerNews(res.data))
-        axios
-            .get(`https://finnhub.io/api/v1/stock/profile2?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => setProfile(res.data))
-        axios
-            .get(`https://finnhub.io/api/v1/stock/earnings?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => setEarnings(res.data))
-        axios.get(`https://finnhub.io/api/v1/quote?symbol=${tickerName}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
-            .then(res => setQuotes(res.data))
-      
-        setIsPending(false)
+        setTimeout(() => {
+            fetch(`https://finnhub.io/api/v1/company-news?symbol=${params.id}&from=2023-01-01&to=2023-03-03&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw Error('Unable to fetch news')
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    setIsPending(false)
+                    setTickerNews(data)
+                    setIsError(null)
+                })
+                .catch(err => {
+                    setIsPending(false)
+                    setIsError(err.message);
+                })
+
+            fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${params.id}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw Error('Unable to fetch logo or name')
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    setIsPending(false)
+                    setProfile(data)
+                    setIsError(null)
+                })
+                .catch(err => {
+                    setIsPending(false)
+                    setIsError(err.message);
+                })
+
+            fetch(`https://finnhub.io/api/v1/stock/earnings?symbol=${params.id}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw Error('Unable to fetch earnings')
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    setIsPending(false)
+                    setEarnings(data)
+                    setIsError(null)
+                })
+                .catch(err => {
+                    setIsPending(false)
+                    setIsError(err.message);
+                })
+            fetch(`https://finnhub.io/api/v1/quote?symbol=${params.id}&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw Error('Unable to fetch quotes')
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    setIsPending(false)
+                    setQuotes(data)
+                    setIsError(null)
+                })
+                .catch(err => {
+                    setIsPending(false)
+                    setIsError(err.message);
+                })
+        }, 1500);
+
     }, [params.id])
+
     const newsArticles = tickerNews.slice(0, 4)
 
     const styles = {
@@ -36,7 +91,7 @@ const About = ({ tickerName }) => {
 
     return (
         <div className="about-container">
-{isPending && <h3 className="loading">Loading Data..</h3>}
+            {isError && <h3>{isError}</h3>}
             {profile && earnings[0] && quotes ? (
                 <div className="profile-container">
                     <header>
@@ -52,9 +107,12 @@ const About = ({ tickerName }) => {
                     <p><strong>Actual:</strong> {earnings[0].actual.toFixed(2)} EPS</p>
                     <p><strong>Date:</strong> Q{earnings[0].quarter} {earnings[0].year}</p>
                 </div>
-            ) : <p>Loading...</p>}
+            ) : <h3>Loading {tickerName} profile...</h3>}
 
-            <h2>{`${tickerName} News`}</h2>
+            {isPending ? (
+                <h3 className="loading">Loading {tickerName} news...</h3>
+            ) :
+                <h2>{`${tickerName} News`}</h2>}
             {newsArticles.map(article =>
                 <article className='news-container' key={article.id}>
                     <a href={article.url}> <h4 className="news-headline">{article.headline}</h4> </a>

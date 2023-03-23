@@ -3,14 +3,14 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Watchlist from './pages/Favorites';
 import { useState, useEffect } from 'react'
-import axios from 'axios';
-
 
 export default function App() {
 
     const [searchValue, setSearchValue] = useState('')
     const [tickers, setTickers] = useState([])
     const [tickerName, setTickerName] = useState('')
+    const [isPending, setIsPending] = useState(true)
+    const [isError, setIsError] = useState(null)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -21,11 +21,21 @@ export default function App() {
     }
 
     useEffect(() => {
-        axios
-            .get(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+        fetch(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
             .then(res => {
-                setTickers(res.data.filter(ticker =>
+                if (!res.ok) {
+                    throw Error('Unable to connnect to server')
+                }
+                return res.json()
+            })
+            .then(data => {
+                setTickers(data.filter(ticker =>
                     ticker.displaySymbol.length <= 4 && ticker.type === 'Common Stock' || ticker.type === 'ADR'))
+                setIsError(null)
+                setIsPending(false)
+            })
+            .catch(err => {
+                setIsError(err.message);
             })
     }, [])
 
@@ -39,14 +49,16 @@ export default function App() {
         setTickerName('')
         setSearchValue('')
     }
- 
+
     return (
         <div>
             <HashRouter>
                 <header>
                     <Link to='/' onClick={clearState} className='logo'>Market<span>Scoop</span></Link>
                     <nav>
+
                         <form onSubmit={handleSubmit}>
+                            {isError && <p>{isError}</p>}
                             <input
                                 placeholder="Search..."
                                 required
@@ -63,10 +75,12 @@ export default function App() {
                 </header>
 
                 {displaySearch.map(ticker =>
+                
                     <div className='display-search-container' key={ticker.figi}>
-                        <p className="ticker-name">{ticker.displaySymbol}</p>
+                        {isPending ? (<p>loading</p>
+                        ) : <p className="ticker-name">{ticker.displaySymbol}</p>}
                         <Link to={`/about/${ticker.symbol}`}>
-                            <button className='details-btn' onClick={(id) => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
+                            <button className='details-btn' onClick={() => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
                             <i className="fa-regular fa-star"></i>
                         </Link>
                     </div>

@@ -1,4 +1,5 @@
 const Stats = ({ all}) => {
+
     const styles = {
         color: all.dp < 0 ? 'red' : 'green'
     }

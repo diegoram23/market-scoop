@@ -170,7 +170,7 @@ i {
 
 /*-----News results on home page and about page -----------*/
 
-.about-container h2 {
+ h2 {
   color: var(--primary);
   text-align: center;
   margin: 0;

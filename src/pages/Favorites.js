@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Favorites = () => {
     const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('favorites')) || [])
+    const [tickerName, setTickerName] = useState('')
 
     console.log('props here', favorites)
     
@@ -17,13 +18,13 @@ const Favorites = () => {
 
     return (
         <div>
-            <h2> This is the favorites page</h2>
+            <h2 className="sub-heading">Favorites</h2>
 
             {favorites.map((ticker, i) =>
                     <div className='display-search-container' key={i}>
                             <p className="ticker-name">{ticker.id}</p>
-                        <Link to={`/about/${ticker.symbol}`}>
-                            <button className='details-btn'>Details</button>
+                        <Link to={`/about/${ticker.id}`}>
+                            <button className='details-btn' onClick={() => setTickerName(ticker.id)}>Details</button>
                         </Link>
                         <i className="fa-solid fa-star" onClick={() => remove(ticker.id)}></i>
                     </div>

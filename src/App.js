@@ -104,7 +104,7 @@ export default function App() {
 
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    {tickerName && <Route path='/about/:id' element={<About tickerName={tickerName} />} />}
+                    <Route path='/about/:id' element={<About tickerName={tickerName} />} />
                     <Route path='/watchlist' element={<Watchlist favorites={favorites} />}></Route>
                 </Routes>
             </HashRouter>

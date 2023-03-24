@@ -112,7 +112,7 @@ const About = ({ tickerName }) => {
             {isPending ? (
                 <h3 className="loading">Loading {tickerName} news...</h3>
             ) :
-                <h2>{`${tickerName} News`}</h2>}
+                <h2>{`${params.id} News`}</h2>}
             {newsArticles.map(article =>
                 <article className='news-container' key={article.id}>
                     <a href={article.url}> <h4 className="news-headline">{article.headline}</h4> </a>

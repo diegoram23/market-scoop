@@ -15,13 +15,15 @@ export default function App() {
     const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('favorites')) || [])
 
     useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(favorites))
-    },[favorites])
+        if (favorites) {
+            localStorage.setItem('favorites', JSON.stringify(favorites))
+        }
+    }, [favorites])
 
 
     const add = (id) => {
         setFavorites(prevId =>
-             [...prevId, {id, saved: true}]
+            [...prevId, { id, saved: true }]
         )
     }
 
@@ -103,7 +105,7 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     {tickerName && <Route path='/about/:id' element={<About tickerName={tickerName} />} />}
-                    <Route path='/watchlist' element={<Watchlist favorites={favorites}/>}></Route>
+                    <Route path='/watchlist' element={<Watchlist favorites={favorites} />}></Route>
                 </Routes>
             </HashRouter>
 

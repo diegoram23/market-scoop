@@ -274,9 +274,10 @@ i {
 
 /*---------------    Footer     -----------------*/
 
-footer p{
+footer p {
   margin: 0;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   padding: 0.05em 0;
   text-align: center;
   background-color: #363638;
@@ -287,4 +288,11 @@ footer a {
   text-decoration: none;
   color: var(--primary);
   cursor: pointer;
+}
+
+.favorites-empty{
+  text-align: center;
+  margin-top: 5em;
+  opacity: 85%;
+  font-size: 18px;
 }

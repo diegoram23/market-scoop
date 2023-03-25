@@ -6,10 +6,10 @@ const Favorites = () => {
     const [tickerName, setTickerName] = useState('')
 
     console.log('props here', favorites)
-    
+
     useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites))
-    },[favorites])
+    }, [favorites])
 
     const remove = (id) => {
         let newFavorites = favorites.filter(ticker => ticker.id !== id)
@@ -18,17 +18,20 @@ const Favorites = () => {
 
     return (
         <div>
+
             <h2 className="sub-heading">Favorites</h2>
 
-            {favorites.map((ticker, i) =>
-                    <div className='display-search-container' key={i}>
-                            <p className="ticker-name">{ticker.id}</p>
-                        <Link to={`/about/${ticker.id}`}>
-                            <button className='details-btn' onClick={() => setTickerName(ticker.id)}>Details</button>
-                        </Link>
-                        <i className="fa-solid fa-star" onClick={() => remove(ticker.id)}></i>
-                    </div>
-                )}
+            {favorites.length === 0 ? (
+                <p className="favorites-empty">Use search bar to add tickers to your favorites.</p>
+            ) : favorites.map((ticker, i) =>
+                <div className='display-search-container' key={i}>
+                    <p className="ticker-name">{ticker.id}</p>
+                    <Link to={`/about/${ticker.id}`}>
+                        <button className='details-btn' onClick={() => setTickerName(ticker.id)}>Details</button>
+                    </Link>
+                    <i className="fa-solid fa-star" onClick={() => remove(ticker.id)}></i>
+                </div>
+            )}
         </div>
 
     );

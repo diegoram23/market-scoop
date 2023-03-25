@@ -12,7 +12,7 @@ const About = ({ tickerName }) => {
     const [isError, setIsError] = useState(null)
 
     useEffect(() => {
-        setTimeout(() => {
+        
             fetch(`https://finnhub.io/api/v1/company-news?symbol=${params.id}&from=2023-01-01&to=2023-03-03&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
                 .then(res => {
                     if (!res.ok) {
@@ -21,7 +21,7 @@ const About = ({ tickerName }) => {
                     return res.json()
                 })
                 .then(data => {
-                    setIsPending(false)
+
                     setTickerNews(data)
                     setIsError(null)
                 })
@@ -38,7 +38,7 @@ const About = ({ tickerName }) => {
                     return res.json()
                 })
                 .then(data => {
-                    setIsPending(false)
+
                     setProfile(data)
                     setIsError(null)
                 })
@@ -55,7 +55,7 @@ const About = ({ tickerName }) => {
                     return res.json()
                 })
                 .then(data => {
-                    setIsPending(false)
+
                     setEarnings(data)
                     setIsError(null)
                 })
@@ -71,7 +71,7 @@ const About = ({ tickerName }) => {
                     return res.json()
                 })
                 .then(data => {
-                    setIsPending(false)
+                    
                     setQuotes(data)
                     setIsError(null)
                 })
@@ -79,7 +79,7 @@ const About = ({ tickerName }) => {
                     setIsPending(false)
                     setIsError(err.message);
                 })
-        }, 1500);
+                setIsPending(false)
 
     }, [params.id])
 
@@ -96,8 +96,8 @@ const About = ({ tickerName }) => {
                 <div className="profile-container">
                     <header>
                         <h3>{profile.name}</h3>
-                        <h3 style={styles}>{quotes.c.toFixed(2)}</h3>
-                        <h3 style={styles}>{quotes.dp.toFixed(2)}%</h3>
+                        <h3 style={styles}>{quotes.c}</h3>
+                        <h3 style={styles}>{Number(quotes.dp).toFixed(2)}%</h3>
                         <img src={profile.logo} />
                     </header>
                     <p><strong>Sector: </strong>{profile.finnhubIndustry}</p>

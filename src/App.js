@@ -1,8 +1,10 @@
 import { HashRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
+//   pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Watchlist from './pages/Favorites';
-import { useState, useEffect } from 'react'
 import Footer from './components/Footer';
 
 export default function App() {
@@ -68,7 +70,7 @@ export default function App() {
     }
 
     return (
-        <div>
+        <div className='app'>
             <HashRouter>
                 <header>
                     <Link to='/' onClick={clearState} className='logo'>Market<span>Scoop</span></Link>
@@ -83,33 +85,44 @@ export default function App() {
                                 value={searchValue}
                             />
                             <Link to={`/about/${searchValue}`}>
-                                <button className="search-btn" onClick={() => setTickerName(searchValue.toUpperCase(), setSearchValue(''))}>Search</button>
+                                <button
+                                    className="search-btn"
+                                    disabled={searchValue === ''}
+                                    onClick={() => setTickerName(searchValue.toUpperCase(), setSearchValue(''))}>Search
+                                </button>
                             </Link>
                         </form>
                         <NavLink to='/watchlist' onClick={() => setSearchValue('')}>Favorites</NavLink>
                     </nav>
 
                 </header>
+                <main>
+                    {displaySearch.map(ticker =>
+                        <div className='display-search-container' key={ticker.figi}>
+                            {isPending ? (
+                                <p>loading</p>
+                            ) :
+                                <p className="ticker-name">{ticker.displaySymbol}</p>}
+                            <Link to={`/about/${ticker.symbol}`}>
+                                <button
+                                    className='details-btn'
+                                    onClick={() => (setTickerName(ticker.symbol), setSearchValue(''))}>Details
+                                </button>
+                            </Link>
+                            <i
+                                className={`${favIcon} fa-star`}
+                                onClick={() => add(ticker.symbol)}>
+                            </i>
+                        </div>
+                    )}
 
-                {displaySearch.map(ticker =>
-                    <div className='display-search-container' key={ticker.figi}>
-                        {isPending ? (
-                            <p>loading</p>
-                        ) :
-                            <p className="ticker-name">{ticker.displaySymbol}</p>}
-                        <Link to={`/about/${ticker.symbol}`}>
-                            <button className='details-btn' onClick={() => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
-                        </Link>
-                        <i className={`${favIcon} fa-star`} onClick={() => add(ticker.symbol)}></i>
-                    </div>
-                )}
 
-
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/about/:id' element={<About tickerName={tickerName} />} />
-                    <Route path='/watchlist' element={<Watchlist favorites={favorites} />}></Route>
-                </Routes>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/about/:id' element={<About tickerName={tickerName} />} />
+                        <Route path='/watchlist' element={<Watchlist favorites={favorites} />}></Route>
+                    </Routes>
+                </main>
             </HashRouter>
             <Footer />
         </div>

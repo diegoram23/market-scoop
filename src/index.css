@@ -14,8 +14,20 @@ body {
   background-color: rgb(231, 231, 231);
 }
 
+/*---------Push footer to the bottom ------------*/
+
+.app {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
 
 /*-----------Loading message --------------*/
+
 .loading {
   display: flex;
   justify-content: center;

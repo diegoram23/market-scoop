@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Watchlist from './pages/Favorites';
 import { useState, useEffect } from 'react'
+import Footer from './components/Footer';
 
 export default function App() {
 
@@ -23,9 +24,10 @@ export default function App() {
 
     const add = (id) => {
         setFavorites(prevId =>
-            [...prevId, { id, saved: true }]
-        )
+            [...prevId, { id, saved: !prevId.saved }])
     }
+
+    let favIcon = favorites.saved ? 'fa-solid' : 'fa-regular'
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -53,12 +55,12 @@ export default function App() {
                 setIsError(err.message);
             })
     }, [])
-
     const displaySearch =
         searchValue.length <= 0
             ? []
             : tickers.filter(tick =>
                 tick.displaySymbol.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 5)
+
 
     const clearState = () => {
         setTickerName('')
@@ -84,7 +86,7 @@ export default function App() {
                                 <button className="search-btn" onClick={() => setTickerName(searchValue.toUpperCase(), setSearchValue(''))}>Search</button>
                             </Link>
                         </form>
-                        <NavLink to='/watchlist'>Favorites</NavLink>
+                        <NavLink to='/watchlist' onClick={() => setSearchValue('')}>Favorites</NavLink>
                     </nav>
 
                 </header>
@@ -98,9 +100,10 @@ export default function App() {
                         <Link to={`/about/${ticker.symbol}`}>
                             <button className='details-btn' onClick={() => (setTickerName(ticker.symbol), setSearchValue(''))}>Details</button>
                         </Link>
-                        <i className="fa-regular fa-star" onClick={() => add(ticker.symbol)}></i>
+                        <i className={`${favIcon} fa-star`} onClick={() => add(ticker.symbol)}></i>
                     </div>
                 )}
+
 
                 <Routes>
                     <Route path='/' element={<Home />} />
@@ -108,7 +111,7 @@ export default function App() {
                     <Route path='/watchlist' element={<Watchlist favorites={favorites} />}></Route>
                 </Routes>
             </HashRouter>
-
+            <Footer />
         </div>
     );
 }

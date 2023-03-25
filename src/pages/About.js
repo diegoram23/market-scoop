@@ -107,10 +107,10 @@ const About = ({ tickerName }) => {
                     <p><strong>Actual:</strong> {earnings[0].actual.toFixed(2)} EPS</p>
                     <p><strong>Date:</strong> Q{earnings[0].quarter} {earnings[0].year}</p>
                 </div>
-            ) : <h3>Loading {tickerName} profile...</h3>}
+            ) : <h3>Loading {params.id} profile...</h3>}
 
             {isPending ? (
-                <h3 className="loading">Loading {tickerName} news...</h3>
+                <h3 className="loading">Loading {params.id} news...</h3>
             ) :
                 <h2>{`${params.id} News`}</h2>}
             {newsArticles.map(article =>

@@ -124,6 +124,7 @@ const Header = () => {
                 </div>
             )}
             <Outlet />
+          
         </div>
     );
 }

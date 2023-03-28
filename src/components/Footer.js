@@ -2,7 +2,7 @@ const Footer = () => {
 
     return (
         <footer>
-            <p><a href="https://github.com/diegoram23">github.com/diegoram23</a></p>
+            <p>&#169; <a href="https://github.com/diegoram23">2023 github.com/diegoram23</a></p>
         </footer>
 
     )

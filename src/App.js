@@ -15,10 +15,10 @@ export default function App() {
         <div className='app'>
             <HashRouter>
                 <Routes>
-                    <Route element={<Header />}>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/about/:id' element={<About />} />
-                        <Route path='/watchlist' element={<Watchlist />}></Route>
+                    <Route path='/' element={<Header />}>
+                        <Route index element={<Home />} />
+                        <Route path='about/:id' element={<About />} />
+                        <Route path='watchlist' element={<Watchlist />}></Route>
                     </Route>
                 </Routes>
             </HashRouter>

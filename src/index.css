@@ -288,9 +288,25 @@ footer a {
   cursor: pointer;
 }
 
+.sub-heading {
+  margin: 0.2em 0;
+}
+
 .favorites-empty{
   text-align: center;
   margin-top: 5em;
   opacity: 85%;
   font-size: 18px;
+}
+
+.notfound-title {
+margin: 0 auto;
+padding: 1em;
+}
+
+.notfound-link {
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-weight: bold;
 }

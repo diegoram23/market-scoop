@@ -5,8 +5,6 @@ const Favorites = () => {
     const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('favorites')) || [])
     const [tickerName, setTickerName] = useState('')
 
-    console.log('props here', favorites)
-
     useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites))
     }, [favorites])

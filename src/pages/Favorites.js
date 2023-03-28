@@ -13,6 +13,7 @@ const Favorites = () => {
 
     const remove = (id) => {
         let newFavorites = favorites.filter(ticker => ticker.id !== id)
+        
         setFavorites([...newFavorites])
     }
 

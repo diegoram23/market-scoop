@@ -24,8 +24,14 @@ const Header = () => {
 
     //Adds ticker to favorites array
     const add = (id) => {
-        setFavorites(prevId =>
-            [...prevId, { id, saved: !prevId.saved }])
+        //Prevents adding duplicate ticker
+        const isDuplicate = favorites.find(item => item.id === id)
+        
+        if(!favorites.includes(isDuplicate)) {
+            setFavorites(prevId =>
+                [...prevId, { id, saved: !prevId.saved }])
+        }
+
     }
 
     //Changes favorites icon from regular <- -> solid on click

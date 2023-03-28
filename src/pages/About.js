@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
-const About = ({ tickerName }) => {
+const About = () => {
 
     const params = useParams()
     const [tickerNews, setTickerNews] = useState([])

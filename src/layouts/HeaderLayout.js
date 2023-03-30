@@ -75,7 +75,7 @@ const Header = () => {
 
     //Filters ticker results to length of 5
     const displaySearch =
-        searchValue.length <= 0
+        searchValue.length <= 0 
             ? []
             : tickers.filter(tick =>
                 tick.displaySymbol.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 5)
@@ -85,6 +85,7 @@ const Header = () => {
         setTickerName('')
         setSearchValue('')
     }
+
     return (
         <div>
             <header>
@@ -102,7 +103,7 @@ const Header = () => {
                         <Link to={`/about/${searchValue}`}>
                             <button
                                 className="search-btn"
-                                disabled={searchValue === ''}
+                                disabled={searchValue === '' || !searchValue.includes(tickers)}
                                 onClick={() => setTickerName(searchValue.toUpperCase(), setSearchValue(''))}>Search
                             </button>
                         </Link>

@@ -310,3 +310,18 @@ padding: 1em;
   color: var(--primary);
   font-weight: bold;
 }
+
+.added-message,
+.duplicate-message {
+  margin: 0;
+  font-weight: 600;
+  background-color: #f8f7f7;
+}
+
+.added-message{
+  color: green;
+}
+
+.duplicate-message {
+  color: red;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import Notification from "../components/Notification";
 
 const Header = () => {
 
@@ -8,6 +9,10 @@ const Header = () => {
     const [searchValue, setSearchValue] = useState('')
     const [tickers, setTickers] = useState([])
     const [tickerName, setTickerName] = useState('')
+
+
+    const [added, setAdded] = useState(null)
+    const [duplicate, setDuplicate] = useState(null)
 
     //Errors and loading messages state
     const [isPending, setIsPending] = useState(true)
@@ -26,16 +31,26 @@ const Header = () => {
     const add = (id) => {
         //Prevents adding duplicate ticker
         const isDuplicate = favorites.find(item => item.id === id)
-        
-        if(!favorites.includes(isDuplicate)) {
+
+        if (!favorites.includes(isDuplicate)) {
             setFavorites(prevId =>
                 [...prevId, { id, saved: !prevId.saved }])
+            setAdded(`${id} added to favorites`)
+
+            //removes added to favorites message after time
+            setTimeout(() => {
+                setAdded(null)
+            }, 1700);
+
+        } else {
+            setDuplicate(`${id} is already in your favorites`)
+
+            //removes added to favorites message  time
+            setTimeout(() => {
+                setDuplicate(null)
+            }, 1700);
         }
-
     }
-
-    //Changes favorites icon from regular <- -> solid on click
-    let favIcon = favorites.saved ? 'fa-solid' : 'fa-regular'
 
     //Handles search button submit
     const handleSubmit = (e) => {
@@ -75,7 +90,7 @@ const Header = () => {
 
     //Filters ticker results to length of 5
     const displaySearch =
-        searchValue.length <= 0 
+        searchValue.length <= 0
             ? []
             : tickers.filter(tick =>
                 tick.displaySymbol.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 5)
@@ -103,7 +118,7 @@ const Header = () => {
                         <Link to={`/about/${searchValue}`}>
                             <button
                                 className="search-btn"
-                                disabled={searchValue === '' || !searchValue.includes(tickers)}
+                                disabled={searchValue === '' || searchValue.length >= 5}
                                 onClick={() => setTickerName(searchValue.toUpperCase(), setSearchValue(''))}>Search
                             </button>
                         </Link>
@@ -125,13 +140,14 @@ const Header = () => {
                         </button>
                     </Link>
                     <i
-                        className={`${favIcon} fa-star`}
+                        className='fa-regular fa-star'
                         onClick={() => add(ticker.symbol)}>
                     </i>
                 </div>
             )}
+            <Notification added={added} duplicate={duplicate} />
             <Outlet />
-          
+
         </div>
     );
 }

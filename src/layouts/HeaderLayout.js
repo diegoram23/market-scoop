@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+
+//notification message
 import Notification from "../components/Notification";
 
-const Header = () => {
+const HeaderLayout = () => {
 
     //Search values state
     const [searchValue, setSearchValue] = useState('')
     const [tickers, setTickers] = useState([])
     const [tickerName, setTickerName] = useState('')
-
 
     const [added, setAdded] = useState(null)
     const [duplicate, setDuplicate] = useState(null)
@@ -93,6 +94,7 @@ const Header = () => {
         searchValue.length <= 0
             ? []
             : tickers.filter(tick =>
+                //displays only 5 tickers at a time
                 tick.displaySymbol.toLowerCase().startsWith(searchValue.toLowerCase())).slice(0, 5)
 
     //Clears search bar state and value
@@ -152,4 +154,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default HeaderLayout;

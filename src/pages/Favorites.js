@@ -9,9 +9,9 @@ const Favorites = () => {
         localStorage.setItem('favorites', JSON.stringify(favorites))
     }, [favorites])
 
+    //removes ticker from favorites
     const remove = (id) => {
         let newFavorites = favorites.filter(ticker => ticker.id !== id)
-        
         setFavorites([...newFavorites])
     }
 

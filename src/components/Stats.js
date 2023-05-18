@@ -1,7 +1,7 @@
 const Stats = ({ all }) => {
 
     return (
-        <main className="stats-container">
+        <div className="stats-container">
             {all.map((all, i) =>
                 <section className="stats-card" key={i}>
                     <h2 className="stats-name">{all.name}</h2>
@@ -9,7 +9,7 @@ const Stats = ({ all }) => {
                     <p className="stats-price">{all.c}</p>
                 </section>
             )}
-        </main>
+        </div>
     )
 }
 

@@ -125,7 +125,7 @@ const HeaderLayout = () => {
                             </button>
                         </Link>
                     </form>
-                    <NavLink to='/watchlist' onClick={() => setSearchValue('')}>Favorites</NavLink>
+                    <NavLink to='/watchlist' className='favorites-btn' onClick={() => setSearchValue('')}>Favorites</NavLink>
                 </nav>
             </header>
 

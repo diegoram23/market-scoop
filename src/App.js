@@ -16,7 +16,7 @@ export default function App() {
         <div className='app'>
             <HashRouter>
                 <Routes>
-                    <Route path='/' element={<HeaderLayout />}>
+                    <Route path='/' element={<Header />}>
                         <Route index element={<Home />} />
                         <Route path='about/:id' element={<About />} />
                         <Route path='watchlist' element={<Watchlist />} />

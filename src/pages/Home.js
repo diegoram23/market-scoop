@@ -10,7 +10,7 @@ const Home = () => {
     const techNews = marketNews.filter(news => news.category === 'top news')
 
     return (
-        <div>
+        <>
          {isPending && <h3 className="loading">Loading Data..</h3>}
             <Stats
                 all={all}
@@ -24,7 +24,7 @@ const Home = () => {
                 <p className="news-time"> {new Date(news.datetime * 1000).toLocaleString("en-us", { hour: '2-digit', minute: '2-digit' })}</p>
                 <p className="news-summary">{news.summary}</p>
             </div>)}
-        </div>
+        </>
     );
 }
 

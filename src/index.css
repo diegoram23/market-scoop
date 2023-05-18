@@ -410,6 +410,26 @@ footer a {
   i {
     font-size: 1.4rem;
   }
+
+  .profile-container {
+    margin: 1em;
+  }
+
+  .profile-container p,
+  .profile-container h3 {
+    padding: 0 1.2em;
+  }
+
+  .profile-container header {
+    padding: 0.2em 0.5em 0.3em 0.2em;
+  }
+
+  article, .news-container {
+    padding: 0.6em 1.5em;
+    margin: 0 auto;
+    max-width: 75%;
+  }
+
 }
 
 /*------------------------ Media Queries Min Width 750px -------------------------------*/
@@ -485,5 +505,5 @@ footer a {
     font-size: 1.2rem;
     margin-left: 1em;
   }
-  
+
 }

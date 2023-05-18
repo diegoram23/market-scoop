@@ -495,7 +495,6 @@ footer a {
   }
 
   .news-container {
-    border: 1px solid red;
     padding: 1em 1.5em;
     width: 90%;
     margin-bottom: 0.5em;
@@ -506,4 +505,33 @@ footer a {
     margin-left: 1em;
   }
 
+  .profile-container {
+    margin: 2.5em;
+  }
+
+  .profile-container p,
+  .profile-container h3 {
+    padding: 0 2em;
+  }
+
+  .profile-container header {
+    padding: 0.2em 2.5em 0.3em 0.2em;
+  }
+
+  article, .news-container {
+    padding: 0.7em 0.5em;
+    margin: 0 auto;
+    max-width: 75%;
+  }
+
+ article  .news-image {
+    width: 65%;
+  }
+
+  article .news-summary, article .news-time {
+    max-width: 550px;
+    font-size: 15px;
+    margin: 0 auto;
+    display: block;
+  }
 }

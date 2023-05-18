@@ -15,8 +15,8 @@ const Home = () => {
             <Stats
                 all={all}
             />
-
-            {isPending && <h3 className="loading">Loading Data..</h3>}
+<div className="grid">
+{isPending && <h3 className="loading">Loading Data..</h3>}
             {techNews.map(news =>
             <div className='news-container' key={news.id}>
                 <a href={news.url}><h4 className="news-headline">{news.headline}</h4></a>
@@ -24,6 +24,8 @@ const Home = () => {
                 <p className="news-time"> {new Date(news.datetime * 1000).toLocaleString("en-us", { hour: '2-digit', minute: '2-digit' })}</p>
                 <p className="news-summary">{news.summary}</p>
             </div>)}
+</div>
+       
         </>
     );
 }

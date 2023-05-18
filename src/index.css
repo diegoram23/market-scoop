@@ -254,6 +254,8 @@ h2 {
 .news-headline {
   margin: 0;
   line-height: 1.2;
+  text-align: center;
+
 }
 
 .news-headline:hover {
@@ -372,14 +374,15 @@ footer a {
     background-color: rgb(231, 231, 231);
     margin: 0.2em 0;
   }
-  
+
   .stats-card {
     padding: 0 2.5em;
-    
+
   }
-  
+
   input {
     width: 180px;
+    font-size: 1rem;
   }
 
   .logo {
@@ -391,7 +394,6 @@ footer a {
   }
 
   form {
-    border: 1px solid green;
     margin-right: auto;
   }
 
@@ -414,13 +416,74 @@ footer a {
 
 @media only screen and (min-width:750px) {
   .news-image {
-    max-width: 70%;
-    max-height: 12rem;
+    max-width: 75%;
+    max-height: 14rem;
+  }
+
+  .news-headline {
+    max-width: 600px;
+  }
+
+  .display-search-container {
+    font-size: 1rem;
+    padding: 0.5em 0.8em;
+  }
+
+  .favorites-btn {
+    font-size: 1.15rem;
+    margin: 0 2em 0 0;
+  }
+
+  .stats-card {
+    padding: 0 6em;
+
+  }
+
+  input {
+    margin-left: 1em;
+    width: 180px;
+    font-size: 1.1rem;
+  }
+
+  .logo {
+    font-size: 2.3rem;
+  }
+
+  .search-btn {
+    font-size: 1rem;
+  }
+
+  form {
+    margin-right: auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    grid-gap: 10px;
+  }
+
+  .details-btn {
+    font-size: 1rem;
+  }
+
+  i {
+    font-size: 1.5rem;
+    margin-right: 1em;
   }
 
   .news-container {
     border: 1px solid red;
     padding: 1em 1.5em;
-    margin: 1em 3em;
+    width: 90%;
+    margin-bottom: 0.5em;
   }
+
+  .ticker-name {
+    font-size: 1.2rem;
+    margin-left: 1em;
+  }
+  
 }

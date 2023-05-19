@@ -113,7 +113,7 @@ input {
 
 
 
-/*-----------QQQ stats on homepage -----------*/
+/*----------- Stats on homepage -----------*/
 
 .stats-container {
   display: flex;
@@ -424,7 +424,8 @@ footer a {
     padding: 0.2em 0.5em 0.3em 0.2em;
   }
 
-  article, .news-container {
+  article,
+  .news-container {
     padding: 0.6em 1.5em;
     margin: 0 auto;
     max-width: 75%;
@@ -518,20 +519,32 @@ footer a {
     padding: 0.2em 2.5em 0.3em 0.2em;
   }
 
-  article, .news-container {
+  article,
+  .news-container {
     padding: 0.7em 0.5em;
     margin: 0 auto;
     max-width: 75%;
   }
 
- article  .news-image {
+  article .news-image {
     width: 65%;
   }
 
-  article .news-summary, article .news-time {
+  article .news-summary,
+  article .news-time {
     max-width: 550px;
     font-size: 15px;
     margin: 0 auto;
     display: block;
   }
+}
+
+/*------------------------ Media Queries Min Width 1000px -------------------------------*/
+@media only screen and (min-width:1000px) {
+
+  .app {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
 }

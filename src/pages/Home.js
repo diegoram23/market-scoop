@@ -11,21 +11,21 @@ const Home = () => {
 
     return (
         <>
-         {isPending && <h3 className="loading">Loading Data..</h3>}
+            {isPending && <h3 className="loading">Loading Data..</h3>}
             <Stats
                 all={all}
             />
-<div className="grid">
-{isPending && <h3 className="loading">Loading Data..</h3>}
-            {techNews.map(news =>
-            <div className='news-container' key={news.id}>
-                <a href={news.url}><h4 className="news-headline">{news.headline}</h4></a>
-                <a href={news.url}> <img className='news-image' alt='user uploaded content' src={news.image} /> </a>
-                <p className="news-time"> {new Date(news.datetime * 1000).toLocaleString("en-us", { hour: '2-digit', minute: '2-digit' })}</p>
-                <p className="news-summary">{news.summary}</p>
-            </div>)}
-</div>
-       
+            <div className="grid">
+                {isPending && <h3 className="loading">Loading Data..</h3>}
+                {techNews.map(news =>
+                    <div className='news-container' key={news.id}>
+                        <a href={news.url}><h4 className="news-headline">{news.headline}</h4></a>
+                        <a href={news.url}> <img className='news-image' alt='user uploaded content' src={news.image} /> </a>
+                        <p className="news-time"> {new Date(news.datetime * 1000).toLocaleString("en-us", { hour: '2-digit', minute: '2-digit' })}</p>
+                        <p className="news-summary">{news.summary}</p>
+                    </div>)}
+            </div>
+
         </>
     );
 }

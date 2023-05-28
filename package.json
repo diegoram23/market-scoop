@@ -1,6 +1,6 @@
 {
-  "name": "stock-market-watchlist",
-  "homepage": "https://diegoram23.github.io/stock-market-watchlist/",
+  "name": "market-scoop",
+  "homepage": "https://diegoram23.github.io/market-scoop/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

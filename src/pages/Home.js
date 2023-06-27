@@ -6,7 +6,7 @@ const Home = () => {
     //Fetches the tops news and four tickers on homepage from useFetchHome component
     const { all, marketNews, isPending } = useFetchHome()
 
-    //Filters the news to 'top news' and limits quantity to 7
+    //Filters the news to 'top news'
     const techNews = marketNews.filter(news => news.category === 'top news')
 
     return (

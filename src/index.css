@@ -523,11 +523,11 @@ footer a {
   .news-container {
     padding: 0.7em 0.5em;
     margin: 0 auto;
-    max-width: 75%;
+    max-width: 70%;
   }
 
   article .news-image {
-    width: 65%;
+    width: 60%;
   }
 
   article .news-summary,

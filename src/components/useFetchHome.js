@@ -34,8 +34,9 @@ const useFetchHome = () => {
             axios
                 .get(`https://finnhub.io/api/v1/news?category=general?&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
                  .then(res => {
-                        const fourArticles = res.data.slice(0, 6)
-                        setMarketNews(fourArticles)
+                        //Cuts down data to only 8 articles
+                        const eightArticles = res.data.slice(0, 8)
+                        setMarketNews(eightArticles)
                         setIsPending(false)
                 })
     }, [])

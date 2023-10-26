@@ -35,8 +35,8 @@ const useFetchHome = () => {
                 .get(`https://finnhub.io/api/v1/news?category=general?&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
                  .then(res => {
                         //Cuts down data to only 8 articles
-                        const eightArticles = res.data.slice(0, 8)
-                        setMarketNews(eightArticles)
+                        const sixArticles = res.data.slice(0, 6)
+                        setMarketNews(sixArticles)
                         setIsPending(false)
                 })
     }, [])

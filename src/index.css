@@ -208,6 +208,10 @@ h2 {
   padding: 0 0.5em;
 }
 
+.stock-img {
+  width: 10%;
+}
+
 .profile-container header {
   display: flex;
   justify-content: space-between;

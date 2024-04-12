@@ -21,7 +21,7 @@ const About = () => {
                     return res.json()
                 })
                 .then(data => {
-                    console.log(data)
+
                     setTickerNews(data)
                     setIsError(null)
                 })

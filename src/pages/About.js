@@ -13,7 +13,7 @@ const About = () => {
 
     useEffect(() => {
         
-            fetch(`https://finnhub.io/api/v1/company-news?symbol=${params.id}&from=2023-01-01&to=2023-03-03&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
+            fetch(`https://finnhub.io/api/v1/company-news?symbol=${params.id}&from=2023-010-06&to=2024-10-10&token=cg9703hr01qk68o7vqc0cg9703hr01qk68o7vqcg`)
                 .then(res => {
                     if (!res.ok) {
                         throw Error('Unable to fetch news')
@@ -21,7 +21,7 @@ const About = () => {
                     return res.json()
                 })
                 .then(data => {
-
+                    console.log(data)
                     setTickerNews(data)
                     setIsError(null)
                 })
@@ -98,7 +98,7 @@ const About = () => {
                         <h3>{profile.name}</h3>
                         <h3 style={styles}>{quotes.c}</h3>
                         <h3 style={styles}>{Number(quotes.dp).toFixed(2)}%</h3>
-                        <img src={profile.logo} />
+                        <img  className="stock-img" src={profile.logo} />
                     </header>
                     <p><strong>Sector: </strong>{profile.finnhubIndustry}</p>
                     <p><strong>IPO date: </strong>{profile.ipo}</p>

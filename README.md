@@ -1,71 +1,31 @@
-# Getting Started with Create React App
+# Market Scoop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Get the latest market news, live stock prices, and create your favorites list
 
-## Available Scripts
+This project uses free public REST API's to fetch the latest market data.
 
-In the project directory, you can run:
+- Get the latest news on the home page
+- Search individual tickers for prices and news related to that particular stock
+- Create a favorites list which stores your preferences with local storage
 
-### `npm start`
+## Watch the full series!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<a href="https://youtu.be/1VMUVZjyvhw" target="_blank">
+<img src="app-screenshot.png" alt="Screenshot of stock Amazon news and price " width="240" height="280" border="8" />
+</a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to use or install this project
 
-### `npm test`
+You can use the link on my github pages to use my project as is or if you would like to make any changes, follow these steps below.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. clone this project
+2. run `npm install` to download the necessary dependencies 
+3. run `npm run start` to run it on your local server
 
-### `npm run build`
+## Where to get your API Key
+This project uses a free API key in which you can get your own at their website if you choose to create your own project. `https://finnhub.io/`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Known issues 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# stock-market-watchlist
+1. Since I am using a free API that I did not create, sometimes the news articles that are fetched do not have images with them and will not populate. You will see a message that says `user uploaded content` in place of that
+2. (In progress) When adding a stock to your favorites, the star will not fill up in color in the search bar but instead I have a message populating stating your stock has been added to your favorites. The star will be filled when you go to your favorites page.

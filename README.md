@@ -8,7 +8,7 @@ This project uses free public REST API's to fetch the latest market data.
 - Search individual tickers for prices and news related to that particular stock
 - Create a favorites list which stores your preferences with local storage
 
-## Watch the full series!
+## Watch the demo
 
 <a href="https://youtu.be/1VMUVZjyvhw" target="_blank">
 <img src="app-screenshot.png" alt="Screenshot of stock Amazon news and price " width="240" height="280" border="8" />
